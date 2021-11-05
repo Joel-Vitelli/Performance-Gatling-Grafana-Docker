@@ -20,15 +20,8 @@ object TestAPIRequest {
   val testPostAPI = exec(http("request post")
     .post(urlPostAPI)
     .headers(headers)
-    .body( StringBody(
-      """{
-          "name": "mauricio",
-          "job": "employee"
-          }"""
-    )).asJson
     .check(status.is(201))
-    .check(jsonPath("$.name").is("mauricio"))
-    .check(jsonPath("$.job").is("employee"))
+
   )
 
 }
